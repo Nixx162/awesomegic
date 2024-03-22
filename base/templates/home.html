@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h3>Hello {{request.user.name}}!</h3>
+<h5>How can we help you today?</h5>
+
+<!-- Transaction form -->
+
+<div class="transaction-form">
+  <div class="tf-header">
+    <a href="#" class="active" id="deposit-box-link">Deposit</a>
+    <a href="#" id="withdraw-box-link">Withdraw</a>
+  </div>
+  <form class="transaction-deposit">
+    <div class="u-form-group">
+      <input type="value" placeholder="Value"/>
+    </div>
+    <div class="u-form-group">
+      <button>Deposit Amount</button>
+    </div>
+  </form>
+  <form class="transaction-withdraw">
+    <div class="u-form-group">
+      <input type="value" placeholder="Value"/>
+    </div>
+    <div class="u-form-group">
+      <button>Withdraw Amount</button>
+    </div>
+  </form>
+</div>
+
+<!-- Transaction box -->
+
+{% endblock content %}

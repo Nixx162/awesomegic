@@ -1,0 +1,13 @@
+$(".transaction-withdraw").hide();
+$("#withdraw-box-link").click(function(){
+  $(".transaction-deposit").fadeOut(100);
+  $(".transaction-withdraw").delay(100).fadeIn(100);
+  $("#deposit-box-link").removeClass("active");
+  $("#withdraw-box-link").addClass("active");
+});
+$("#deposit-box-link").click(function(){
+  $(".transaction-deposit").delay(100).fadeIn(100);;
+  $(".transaction-withdraw").fadeOut(100);
+  $("#deposit-box-link").addClass("active");
+  $("#withdraw-box-link").removeClass("active");
+});
