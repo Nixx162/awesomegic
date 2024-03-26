@@ -38,6 +38,7 @@
   <!-- Transaction box -->
 
   <div class="transaction-container">
+    <h3>Transaction History</h3>
     <ul class="transaction-list"></ul>
     <div class="transaction-list-footer">
         <button class="btn" id="prev-page"><</button>
@@ -49,4 +50,6 @@
 
 <script src="{% static 'js/transaction_list_script.js' %}" defer></script>
 {{ transactions|json_script }}
+<script src="{% static 'js/transaction_form_script.js' %}" defer></script>
+{{ page|json_script }}
 {% endblock content %}
