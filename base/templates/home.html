@@ -1,35 +1,52 @@
 {% extends 'main.html' %}
+{% load static %}
 
 {% block content %}
 
-<h3>Hello {{request.user.name}}!</h3>
-<h5>How can we help you today?</h5>
+<div class="page">
+  <h3>Hello {{request.user.name}}!</h3>
+  <h5>You currently have: ${{request.user.balance}}</h5>
+  <h5>How can we help you today?</h5>
 
-<!-- Transaction form -->
+  <!-- Transaction form -->
 
-<div class="transaction-form">
-  <div class="tf-header">
-    <a href="#" class="active" id="deposit-box-link">Deposit</a>
-    <a href="#" id="withdraw-box-link">Withdraw</a>
+  <div class="transaction-form">
+    <div class="tf-header">
+      <a href="#" class="active" id="deposit-box-link">Deposit</a>
+      <a href="#" id="withdraw-box-link">Withdraw</a>
+    </div>
+    <form class="transaction-deposit" action="{% url 'deposit' %}" method="POST">
+      {% csrf_token %}
+      <div class="u-form-group">
+        <input name="value" type="number" step="any" min="0" placeholder="Value"/>
+      </div>
+      <div class="u-form-group">
+        <button>Deposit Amount</button>
+      </div>
+    </form>
+    <form class="transaction-withdraw" action="{% url 'withdraw' %}" method="POST">
+      {% csrf_token %}
+      <div class="u-form-group">
+        <input name="value" type="number" step="any" min="0" placeholder="Value"/>
+      </div>
+      <div class="u-form-group">
+        <button>Withdraw Amount</button>
+      </div>
+    </form>
   </div>
-  <form class="transaction-deposit">
-    <div class="u-form-group">
-      <input type="value" placeholder="Value"/>
+
+  <!-- Transaction box -->
+
+  <div class="transaction-container">
+    <ul class="transaction-list"></ul>
+    <div class="transaction-list-footer">
+        <button class="btn" id="prev-page"><</button>
+        <div><span id="current-page"></span> of <span id="total-pages"></span></div>
+        <button class="btn" id="next-page">></button>
     </div>
-    <div class="u-form-group">
-      <button>Deposit Amount</button>
-    </div>
-  </form>
-  <form class="transaction-withdraw">
-    <div class="u-form-group">
-      <input type="value" placeholder="Value"/>
-    </div>
-    <div class="u-form-group">
-      <button>Withdraw Amount</button>
-    </div>
-  </form>
+  </div>
 </div>
 
-<!-- Transaction box -->
-
+<script src="{% static 'js/transaction_list_script.js' %}" defer></script>
+{{ transactions|json_script }}
 {% endblock content %}

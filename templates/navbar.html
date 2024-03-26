@@ -1,0 +1,31 @@
+{% load static %}
+
+<header class="home-navbar">
+  <a href="{% url 'home' %}" class="header-logo">
+    <img src="{% static 'images/logo.png' %}" height="100px" width="100px"/>
+    <h1>AwesomeGIC</h1>
+  </a>
+  <nav class="header-menu">
+    {% if request.user.is_authenticated %}
+
+    <div class="header-loggedin">
+      <div class="header-user">
+        <img src="{% static 'images/avatar.svg' %}" height="50px" width="50px"/>
+        <p>@{{request.user.username}}</p>
+      </div>
+      <a href="{% url 'logout' %}" class="header-logout">
+        <p>Logout</p>
+        <img src="{% static 'images/logout.svg' %}" height="20px" width="20px"/>
+      </a>
+    </div>
+
+    {% else %}
+    
+    <a href="{% url 'login' %}" class="header-login">
+      <img src="{% static 'images/avatar.svg' %}" height="50px" width="50px"/>
+      <p>Login</p>
+    </a>
+
+    {% endif %}
+  </nav>
+</header>

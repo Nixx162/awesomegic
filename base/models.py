@@ -18,5 +18,12 @@ class Transaction(models.Model):
 
   transaction_type = models.TextField(choices=TRANSACTION_TYPE)
   user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-  datetime = models.DateTimeField()
-  value = models.PositiveIntegerField(null=True)
+  datetime = models.DateTimeField(auto_now_add=True)
+  value = models.FloatField(null=True)
+
+  def to_dict(self):
+    return {
+      'transaction_type': self.TRANSACTION_TYPE[self.transaction_type],
+      'datetime': self.datetime.isoformat(),
+      'value': self.value
+    }

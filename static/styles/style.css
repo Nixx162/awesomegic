@@ -1,26 +1,128 @@
-body{
-  background-color: #babdbc;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
+
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  min-height: 100vh;
+  background-color: #ccc;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+}
+
+/* Header */
+
+.home-navbar {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 15px;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.08);
+}
+
+.header-logo {
+  all: unset;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+a.header-logo:hover {
+  color: #5476b4;
+}
+
+.header-logo h1 {
+  font-size: 35px;
+  font-family: 'Poppins', sans-serif;
+  color: #5476b4;
+  margin-bottom: 0;
+}
+
+.header-loggedin {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.header-user p {
+  font-family: 'Poppins', sans-serif;
+  color: #5476b4;
+  margin-bottom: 0;
+}
+
+.header-login {
+  all: unset;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-login p {
+  font-family: 'Poppins', sans-serif;
+  color: #424040;
+  margin-bottom: 0;
+}
+
+.header-login p:hover {
+  color: gray;
+}
+
+.header-logout {
+  all: unset;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-logout p {
+  font-family: 'Poppins', sans-serif;
+  color: #424040;
+  margin-bottom: 0;
+}
+
+.header-logout p:hover {
+  color: gray;
+}
+
+/* Page */
+.page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+/* Transaction Form */
 
 .transaction-form{
   position:relative;
   margin: 10px auto;
   width: 50vw;
-  height: 20vh;
+  height: auto;
   background-color: #fff;
   padding: 10px;
   border-radius: 3px;
   -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
--moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
+  -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
+  box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
 }
 .tf-header{
-  position:relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #00415d;
   margin: 5px 5px 10px 5px;
   padding-bottom:10px;
   border-bottom: 1px solid #eee;
-  text-align:center;
   height:28px;
 }
 .tf-header a{
@@ -40,19 +142,21 @@ box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
 }
 
 .transaction-deposit,.transaction-withdraw{
-  position:relative;
-  float: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
   width: 100%;
-  height:auto;
+  height: 100%;
   margin-top: 20px;
-  text-align:center;
 }
 .u-form-group{
   width:100%;
   margin-bottom: 10px;
 }
-.u-form-group input[type="value"]{
-  width: calc(50% - 22px);
+.u-form-group input[type="number"]{
+  width: 50%;
   height:45px;
   outline: none;
   border: 1px solid #ddd;
@@ -68,7 +172,7 @@ box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
   border-color: #358efb;
 }
 .u-form-group button{
-  width:50%;
+  width:25%;
   background-color: #1CB94E;
   border: none;
   outline: none;
@@ -85,4 +189,357 @@ box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
   text-decoration: underline;
   color: #888;
   font-size: 0.75rem;
+}
+
+/* Transaction List */
+
+.transaction-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  max-width: 500px;
+  width: 100%;
+  margin-top: 30px;
+  background-color: #fff;
+  overflow: hidden;
+  border-radius: 10px;
+  padding-top: 20px;
+}
+
+.transaction-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  list-style: none;
+  padding-left: 0;
+  width: calc(100% - 40px);
+  min-height: 40px;
+}
+
+.list-item-deposit {
+  padding: 1rem;
+  box-shadow: -1px 5px 7px 1px rgba(164, 164, 164, 0.15);
+  border-bottom: 1px solid #e7e7e7;
+  animation: 0.5s fade ease-in-out;
+  width: 100%
+}
+
+.list-item-deposit > .item-title {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #1CB94E;
+  margin-bottom: 0.25rem;
+}
+
+.list-item-deposit > .item-description {
+  margin-bottom: 0.5rem;
+}
+
+.list-item-withdraw {
+  padding: 1rem;
+  box-shadow: -1px 5px 7px 1px rgba(164, 164, 164, 0.15);
+  border-bottom: 1px solid #e7e7e7;
+  animation: 0.5s fade ease-in-out;
+  width: 100%
+}
+
+.list-item-withdraw > .item-title {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: rgb(241, 62, 62);
+  margin-bottom: 0.25rem;
+}
+
+.list-item-withdraw > .item-description {
+  margin-bottom: 0.5rem;
+}
+
+.transaction-list-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1CB94E;
+  color: #fff;
+  padding: 1rem;
+  width: 100%;
+}
+
+.btn {
+  padding: 0.5rem;
+  border: none;
+  font-size: 1rem;
+  background: transparent;
+  transition: background-color 0.3s ease;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Login */
+
+button {
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+input {
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+input[type=submit] {
+  cursor: pointer;
+}
+input::placeholder {
+  font-size: 0.85rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.1rem;
+  color: #ccc;
+}
+
+/**
+ * * Bounce to the left side
+ * */
+@keyframes bounceLeft {
+  0% {
+    transform: translate3d(100%, -50%, 0);
+  }
+  50% {
+    transform: translate3d(-30px, -50%, 0);
+  }
+  100% {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+/**
+ * * Bounce to the left side
+ * */
+@keyframes bounceRight {
+  0% {
+    transform: translate3d(0, -50%, 0);
+  }
+  50% {
+    transform: translate3d(calc(100% + 30px), -50%, 0);
+  }
+  100% {
+    transform: translate3d(100%, -50%, 0);
+  }
+}
+/**
+ * * Show Sign Up form
+ * */
+@keyframes showSignUp {
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translate3d(0, 0, 0);
+  }
+}
+/**
+ * * Page background
+ * */
+.user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background: #ccc;
+  background-size: cover;
+}
+.user_options-container {
+  position: relative;
+  width: 80%;
+}
+.user_options-text {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: rgba(34, 34, 34, 0.85);
+  border-radius: 3px;
+}
+
+/**
+ * * Registered and Unregistered user box and text
+ * */
+.user_options-registered,
+.user_options-unregistered {
+  width: 50%;
+  padding: 75px 45px;
+  color: #fff;
+  font-weight: 300;
+}
+
+.user_registered-title,
+.user_unregistered-title {
+  margin-bottom: 15px;
+  font-size: 1.66rem;
+  line-height: 1em;
+}
+
+.user_unregistered-text,
+.user_registered-text {
+  font-size: 0.83rem;
+  line-height: 1.4em;
+}
+
+.user_registered-login,
+.user_unregistered-signup {
+  margin-top: 30px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 10px 30px;
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 1em;
+  letter-spacing: 0.2rem;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+.user_registered-login:hover,
+.user_unregistered-signup:hover {
+  color: rgba(34, 34, 34, 0.85);
+  background-color: #ccc;
+}
+
+/**
+ * * Login and signup forms
+ * */
+.user_options-forms {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  width: calc(50% - 30px);
+  min-height: 420px;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 2px 0 15px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  transform: translate3d(100%, -50%, 0);
+  transition: transform 0.4s ease-in-out;
+  height: 180%;
+}
+.user_options-forms .user_forms-login {
+  transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+.user_options-forms .forms_title {
+  margin-bottom: 45px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1em;
+  text-transform: uppercase;
+  color: #1CB94E;
+  letter-spacing: 0.1rem;
+}
+.user_options-forms .forms_field:not(:last-of-type) {
+  margin-bottom: 20px;
+}
+.user_options-forms .forms_field-input {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  padding: 6px 20px 6px 6px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: gray;
+  letter-spacing: 0.1rem;
+  transition: border-color 0.2s ease-in-out;
+}
+.user_options-forms .forms_field-input:focus {
+  border-color: gray;
+}
+.user_options-forms .forms_buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 35px;
+}
+.user_options-forms .forms_buttons-action {
+  background-color: #1CB94E;
+  border-radius: 3px;
+  padding: 10px 35px;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  transition: background-color 0.2s ease-in-out;
+}
+.user_options-forms .forms_buttons-action:hover {
+  background-color: #1CB94E;
+}
+.user_options-forms .user_forms-signup,
+.user_options-forms .user_forms-login {
+  position: absolute;
+  top: 70px;
+  left: 40px;
+  width: calc(100% - 80px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, transform 0.5s ease-in-out;
+}
+.user_options-forms .user_forms-signup {
+  transform: translate3d(120px, 0, 0);
+}
+.user_options-forms .user_forms-login {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/**
+ * * Triggers
+ * */
+.user_options-forms.bounceLeft {
+  animation: bounceLeft 1s forwards;
+}
+.user_options-forms.bounceLeft .user_forms-signup {
+  animation: showSignUp 1s forwards;
+}
+.user_options-forms.bounceLeft .user_forms-login {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(-120px, 0, 0);
+}
+.user_options-forms.bounceRight {
+  animation: bounceRight 1s forwards;
+}
+
+/**
+ * * Responsive 990px
+ * */
+@media screen and (max-width: 990px) {
+  .user_options-forms {
+    min-height: 350px;
+  }
+  .user_options-forms .forms_buttons {
+    flex-direction: column;
+  }
+  .user_options-forms .user_forms-login .forms_buttons-action {
+    margin-top: 30px;
+  }
+  .user_options-forms .user_forms-signup,
+.user_options-forms .user_forms-login {
+    top: 40px;
+  }
+
+  .user_options-registered,
+.user_options-unregistered {
+    padding: 50px 45px;
+  }
+}
+
+.alert {
+  margin-bottom: 0;
 }
