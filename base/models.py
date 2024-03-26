@@ -9,7 +9,7 @@ class User(AbstractUser):
 
 class Transaction(models.Model):
   class Meta:
-    ordering = ["datetime"]
+    ordering = ["-datetime"]
 
   TRANSACTION_TYPE = {
     "dep": "Deposit",

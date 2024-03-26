@@ -51,6 +51,13 @@ a.header-logo:hover {
   gap: 30px;
 }
 
+.header-user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .header-user p {
   font-family: 'Poppins', sans-serif;
   color: #5476b4;
@@ -137,7 +144,7 @@ a.header-logo:hover {
   transition: all 0.1s linear;
 }
 .tf-header .active{
-  color: #029f5b;
+  color: #3c6bc2;
   font-size: 18px;
 }
 
@@ -173,7 +180,7 @@ a.header-logo:hover {
 }
 .u-form-group button{
   width:25%;
-  background-color: #1CB94E;
+  background-color: #5476b4;
   border: none;
   outline: none;
   color: #fff;
@@ -205,6 +212,10 @@ a.header-logo:hover {
   overflow: hidden;
   border-radius: 10px;
   padding-top: 20px;
+}
+
+.transaction-container h3 {
+  color: #5476b4;
 }
 
 .transaction-list {
@@ -260,7 +271,7 @@ a.header-logo:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #1CB94E;
+  background-color: #5476b4;
   color: #fff;
   padding: 1rem;
   width: 100%;
@@ -438,7 +449,7 @@ input::placeholder {
   font-weight: 500;
   line-height: 1em;
   text-transform: uppercase;
-  color: #1CB94E;
+  color: #5476b4;
   letter-spacing: 0.1rem;
 }
 .user_options-forms .forms_field:not(:last-of-type) {
@@ -465,7 +476,7 @@ input::placeholder {
   margin-top: 35px;
 }
 .user_options-forms .forms_buttons-action {
-  background-color: #1CB94E;
+  background-color: #5476b4;
   border-radius: 3px;
   padding: 10px 35px;
   font-size: 1rem;
@@ -477,7 +488,7 @@ input::placeholder {
   transition: background-color 0.2s ease-in-out;
 }
 .user_options-forms .forms_buttons-action:hover {
-  background-color: #1CB94E;
+  background-color: #87a2d3;
 }
 .user_options-forms .user_forms-signup,
 .user_options-forms .user_forms-login {
