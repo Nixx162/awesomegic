@@ -8,10 +8,10 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='login')
 def home(request):
-    transactions = Transaction.objects.filter(user=request.user)
-    transactions = [transaction.to_dict() for transaction in transactions]
-    context = {'transactions': transactions}
-    return render(request, 'home.html', context)
+  transactions = Transaction.objects.filter(user=request.user)
+  transactions = [transaction.to_dict() for transaction in transactions]
+  context = {'transactions': transactions}
+  return render(request, 'home.html', context)
 
 def deposit(request):
   if request.method == 'POST':
@@ -30,7 +30,7 @@ def deposit(request):
 
     return redirect('home')
 
-  return render(request, 'home.html')
+  return redirect('home')
 
 def withdraw(request):
   if request.method == 'POST':
@@ -53,7 +53,7 @@ def withdraw(request):
 
     return redirect('home')
 
-  return render(request, 'home.html')
+  return redirect('home')
 
 def login(request):
   if request.user.is_authenticated:
