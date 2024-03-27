@@ -17,7 +17,12 @@ def deposit(request):
   if request.method == 'POST':
     user = request.user
     user_balance = user.balance
-    transaction_value = float(request.POST.get('value'))
+
+    try:
+      transaction_value = float(request.POST.get('value'))
+    except:
+      messages.error(request, 'Please input a valid positive number')
+      return redirect('home')
 
     user.balance = user_balance + transaction_value
     user.save()
@@ -36,7 +41,12 @@ def withdraw(request):
   if request.method == 'POST':
     user = request.user
     user_balance = user.balance
-    transaction_value = float(request.POST.get('value'))
+
+    try:
+      transaction_value = float(request.POST.get('value'))
+    except:
+      messages.error(request, 'Please input a valid positive number')
+      return redirect('home')
 
     if (user_balance < transaction_value):
       messages.error(request, 'Your balance is not enough')
