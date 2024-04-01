@@ -23,6 +23,10 @@ def deposit(request):
     except:
       messages.error(request, 'Please input a valid positive number')
       return redirect('home')
+    
+    if (transaction_value == 0):
+      messages.error(request, 'Transaction value cannot be 0')
+      return redirect('home')
 
     user.balance = user_balance + transaction_value
     user.save()
@@ -46,6 +50,10 @@ def withdraw(request):
       transaction_value = float(request.POST.get('value'))
     except:
       messages.error(request, 'Please input a valid positive number')
+      return redirect('home')
+    
+    if (transaction_value == 0):
+      messages.error(request, 'Transaction value cannot be 0')
       return redirect('home')
 
     if (user_balance < transaction_value):
