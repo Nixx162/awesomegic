@@ -16,7 +16,7 @@ To deploy locally, **ensure that you have Python installed**, then do the follow
 ## MacOS
 
 1. Go to the project's root directory on your shell
-2. Run `source env/bin/activate`
+2. Run `source env/Scripts/activate`
 3. Run `python manage.py makemigrations`
 4. Run `python manage.py migrate`
 5. Run `python manage.py runserver`
